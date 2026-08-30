@@ -108,6 +108,22 @@ export default function Cursor() {
             <div
                 className={`pointer-events-none absolute -top-1.25 -left-1.25 h-[calc(100%+10px)] w-[calc(100%+10px)] rounded-xl bg-radial from-transparent from-30% to-slate-50/50 blur-xs transition-all duration-100 ${cursorClick ? "opacity-100" : "opacity-0"}`}
             />
+            {hovered.isHovered && hovered.hoverMessage && (
+                <div
+                    className="absolute text-xs text-white"
+                    style={{
+                        top: "calc(100% + 2px)",
+                        left: "calc(100% + 2px)",
+                    }}
+                >
+                    <span
+                        className="line-clamp-1 whitespace-nowrap"
+                        role="presentation"
+                    >
+                        {hovered.hoverMessage}
+                    </span>
+                </div>
+            )}
         </animated.div>
     );
 }

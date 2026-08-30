@@ -1,6 +1,7 @@
 import { inter } from "@/lib/fonts";
 
 import TestButton from "@/components/atoms/testButton";
+import LinkAtom from "@/components/atoms/link";
 
 export default function Home() {
     return (
@@ -13,6 +14,14 @@ export default function Home() {
             <div className="flex flex-col items-start justify-start space-y-2">
                 <span className="text-2xl text-white">Test</span>
                 <TestButton />
+                <LinkAtom
+                    href="/test"
+                    title="Test Link title"
+                    target="_blank"
+                    className="text-white underline"
+                >
+                    Test Link
+                </LinkAtom>
             </div>
         </div>
     );
