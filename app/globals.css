@@ -6,7 +6,6 @@
 
 @layer base {
     body {
-        @apply cursor-none;
         background-color: var(--color-background);
     }
 }

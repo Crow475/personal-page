@@ -25,7 +25,7 @@ export default function TestButton() {
     return (
         <button
             ref={buttonRef}
-            className="boreder-1 cursor-none rounded-lg border-2 border-red-900 bg-transparent px-4 py-2 text-white hover:border-transparent hover:bg-red-500/40"
+            className="boreder-1 cursor-none rounded-lg border-2 border-red-900 bg-transparent px-4 py-2 text-white hover:border-transparent hover:bg-red-500/40 motion-reduce:cursor-pointer"
             onMouseEnter={() => {
                 setHovered(hoverCursorState);
             }}

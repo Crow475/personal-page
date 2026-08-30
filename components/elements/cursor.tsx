@@ -96,7 +96,7 @@ export default function Cursor() {
 
     return (
         <animated.div
-            className={`pointer-events-none ${cursorVisible ? "absolute" : "hidden"} ${hovered.isHovered && hovered.hoverType === hoverType.button ? "-z-10" : "z-50"} rounded-lg border border-t-white/50 border-r-neutral-100/5 border-b-neutral-100/5 border-l-white/50 bg-radial-[at_25%_25%] from-slate-300/40 to-slate-50/20 backdrop-blur-3xl`}
+            className={`pointer-events-none ${cursorVisible ? "absolute motion-reduce:hidden" : "hidden"} ${hovered.isHovered && hovered.hoverType === hoverType.button ? "-z-10" : "z-50"} rounded-lg border border-t-white/50 border-r-neutral-100/5 border-b-neutral-100/5 border-l-white/50 bg-radial-[at_25%_25%] from-slate-300/40 to-slate-50/20 backdrop-blur-3xl`}
             role="presentation"
             style={{
                 left: x.to((x_to) => `${x_to}px`),
