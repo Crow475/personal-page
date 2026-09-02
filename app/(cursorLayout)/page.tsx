@@ -11,7 +11,7 @@ export default function Home() {
                 <br />
                 this is a Test
             </h1>
-            <div className="flex flex-col items-start justify-start space-y-2">
+            <div className="flex flex-col items-start justify-start space-y-1">
                 <span className="text-2xl text-white">Test</span>
                 <TestButton />
                 <LinkAtom
@@ -22,6 +22,7 @@ export default function Home() {
                 >
                     Test Link
                 </LinkAtom>
+                <span className="text-white">Lorem ipsum dolor set amet</span>
             </div>
         </div>
     );

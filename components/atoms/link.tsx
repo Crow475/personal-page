@@ -15,6 +15,7 @@ import {
 type LinkAtomProps = {
     href: string;
     title?: string;
+    className?: string;
     children: React.ReactNode;
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
@@ -22,6 +23,7 @@ export default function LinkAtom({
     href,
     title,
     children,
+    className,
     ...props
 }: LinkAtomProps) {
     const titleProvided = title !== undefined;
@@ -47,6 +49,7 @@ export default function LinkAtom({
                 onMouseEnter={() => setHovered(hoverCursorState)}
                 onMouseLeave={() => setHovered(defaultCursorState)}
                 aria-describedby={titleId}
+                className={`${className} cursor-none motion-reduce:cursor-pointer`}
                 {...props}
             >
                 {children}
