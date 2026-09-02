@@ -1,7 +1,10 @@
+"use client";
+
 import { inter } from "@/lib/fonts";
 
 import TestButton from "@/components/atoms/testButton";
 import LinkAtom from "@/components/atoms/link";
+import ButtonAtom from "@/components/atoms/button";
 
 export default function Home() {
     return (
@@ -23,6 +26,15 @@ export default function Home() {
                     Test Link
                 </LinkAtom>
                 <span className="text-white">Lorem ipsum dolor set amet</span>
+                <ButtonAtom
+                    onClick={() => {
+                        alert("test button clicked");
+                    }}
+                    className="rounded-lg border-2 border-white/20 bg-transparent px-4 py-2 text-white hover:border-transparent hover:bg-white/20 motion-reduce:cursor-pointer"
+                    title="Test Button title"
+                >
+                    Test Button
+                </ButtonAtom>
             </div>
         </div>
     );
