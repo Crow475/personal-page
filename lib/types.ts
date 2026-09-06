@@ -10,4 +10,10 @@ type CursorState = {
     hoverMessage: string | null;
 };
 
-export { hoverType, type CursorState };
+type NavDestination = {
+    href: string;
+    title: string;
+    icon: React.ReactNode;
+};
+
+export { hoverType, type CursorState, type NavDestination };

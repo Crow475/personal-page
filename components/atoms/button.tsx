@@ -44,7 +44,7 @@ export default function ButtonAtom({
                 onMouseEnter={() => setHovered(hoverCursorState)}
                 onMouseLeave={() => setHovered(defaultCursorState)}
                 aria-describedby={titleId}
-                className={`${className} cursor-none motion-reduce:cursor-pointer`}
+                className={`${className} z-30 cursor-none motion-reduce:cursor-pointer`}
                 {...props}
             >
                 {children}

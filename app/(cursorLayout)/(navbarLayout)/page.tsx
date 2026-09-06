@@ -8,7 +8,7 @@ import ButtonAtom from "@/components/atoms/button";
 
 export default function Home() {
     return (
-        <div>
+        <div className="h-[200vh]">
             <h1 className={`${inter.className} text-9xl font-black text-white`}>
                 Hi
                 <br />
