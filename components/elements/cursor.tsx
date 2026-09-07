@@ -2,16 +2,20 @@
 
 import { hoverType } from "@/lib/types";
 
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 
 import { animated, useSpring } from "@react-spring/web";
 
-import { CursorContext } from "@/components/elements/cursorContext";
+import { LuArrowUpRight } from "react-icons/lu";
+
+import { useCursor } from "@/components/elements/cursorContext";
+
+const shapeshiftHoverTypes: hoverType[] = [hoverType.button];
 
 export default function Cursor() {
     const hideDistance = 5; // Distance from the edge of the screen to hide the cursor
 
-    const { hovered } = useContext(CursorContext);
+    const { hovered } = useCursor();
 
     const [cursorVisible, setCursorVisible] = useState<boolean>(true);
     const [cursorClick, setCursorClick] = useState<boolean>(false);
@@ -32,7 +36,12 @@ export default function Cursor() {
                 fromBottom: window.innerHeight - event.clientY,
             };
 
-            if (hovered.isHovered && rect) {
+            if (
+                hovered.isHovered &&
+                hovered.hoverType &&
+                shapeshiftHoverTypes.includes(hovered.hoverType) &&
+                rect
+            ) {
                 const targetCenterX = rect.left + rect.width / 2;
                 const targetCenterY = rect.top + rect.height / 2;
 
@@ -45,8 +54,8 @@ export default function Cursor() {
                 });
             } else {
                 setCursorPos({
-                    x: newCursorPos.x,
-                    y: newCursorPos.y,
+                    x: newCursorPos.x - 8, // Adjust for cursor size (16px / 2)
+                    y: newCursorPos.y - 8, // Adjust for cursor size (16px / 2)
                 });
             }
 
@@ -83,8 +92,18 @@ export default function Cursor() {
     }, [hovered, rect]);
 
     const { height, width } = useSpring({
-        height: hovered.isHovered ? rect?.height || 0 : 16,
-        width: hovered.isHovered ? rect?.width || 0 : 16,
+        height:
+            hovered.isHovered &&
+            hovered.hoverType &&
+            shapeshiftHoverTypes.includes(hovered.hoverType)
+                ? rect?.height || 0
+                : 16,
+        width:
+            hovered.isHovered &&
+            hovered.hoverType &&
+            shapeshiftHoverTypes.includes(hovered.hoverType)
+                ? rect?.width || 0
+                : 16,
         config: { mass: 1, tension: 300, friction: 20 },
     });
 
@@ -96,7 +115,7 @@ export default function Cursor() {
 
     return (
         <animated.div
-            className={`pointer-events-none ${cursorVisible ? "absolute motion-reduce:hidden" : "hidden"} ${hovered.isHovered && hovered.hoverType === hoverType.button ? "-z-10" : "z-50"} rounded-lg border border-t-white/50 border-r-neutral-100/5 border-b-neutral-100/5 border-l-white/50 bg-radial-[at_25%_25%] from-slate-300/40 to-slate-50/20 backdrop-blur-3xl`}
+            className={`pointer-events-none ${cursorVisible ? "absolute motion-reduce:hidden" : "hidden"} ${hovered.isHovered && hovered.hoverType === hoverType.button ? "z-20" : "z-50"} rounded-lg border border-t-white/50 border-r-neutral-100/5 border-b-neutral-100/5 border-l-white/50 bg-radial-[at_25%_25%] from-slate-300/40 to-slate-50/20 backdrop-blur-3xl`}
             role="presentation"
             style={{
                 left: x.to((x_to) => `${x_to}px`),
@@ -105,9 +124,30 @@ export default function Cursor() {
                 height: height.to((h) => `${h}px`),
             }}
         >
+            <div className="flex flex-col items-center justify-center">
+                {hovered.isHovered && hovered.hoverType === hoverType.link && (
+                    <LuArrowUpRight className="text-white mix-blend-difference" />
+                )}
+            </div>
             <div
                 className={`pointer-events-none absolute -top-1.25 -left-1.25 h-[calc(100%+10px)] w-[calc(100%+10px)] rounded-xl bg-radial from-transparent from-30% to-slate-50/50 blur-xs transition-all duration-100 ${cursorClick ? "opacity-100" : "opacity-0"}`}
             />
+            {hovered.isHovered && hovered.hoverMessage && (
+                <div
+                    className="absolute rounded-sm border border-white/10 bg-black/70 px-1 py-0.5 text-xs text-white"
+                    style={{
+                        top: "calc(100% + 2px)",
+                        left: "calc(100% + 2px)",
+                    }}
+                >
+                    <span
+                        className="line-clamp-1 whitespace-nowrap"
+                        role="presentation"
+                    >
+                        {hovered.hoverMessage}
+                    </span>
+                </div>
+            )}
         </animated.div>
     );
 }
