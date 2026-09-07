@@ -3,17 +3,17 @@
 import type { CursorState } from "@/lib/types";
 import { hoverType } from "@/lib/types";
 
-import { useRef, useContext } from "react";
+import { useRef } from "react";
 
 import {
-    CursorContext,
+    useCursor,
     defaultCursorState,
 } from "@/components/elements/cursorContext";
 
 export default function TestButton() {
     const buttonRef = useRef<HTMLButtonElement>(null);
 
-    const { setHovered } = useContext(CursorContext);
+    const { setHovered } = useCursor();
 
     const hoverCursorState: CursorState = {
         isHovered: true,

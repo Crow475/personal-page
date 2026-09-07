@@ -5,11 +5,11 @@ import Link from "next/link";
 import type { CursorState } from "@/lib/types";
 import { hoverType } from "@/lib/types";
 
-import { useRef, useContext, useId } from "react";
+import { useRef, useId } from "react";
 
 import {
-    CursorContext,
     defaultCursorState,
+    useCursor,
 } from "@/components/elements/cursorContext";
 
 type LinkAtomProps = {
@@ -32,7 +32,7 @@ export default function LinkAtom({
 
     const linkRef = useRef<HTMLAnchorElement>(null);
 
-    const { setHovered } = useContext(CursorContext);
+    const { setHovered } = useCursor();
 
     const hoverCursorState: CursorState = {
         isHovered: true,

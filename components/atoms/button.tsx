@@ -3,11 +3,11 @@
 import type { CursorState } from "@/lib/types";
 import { hoverType } from "@/lib/types";
 
-import { useRef, useContext, useId } from "react";
+import { useRef, useId } from "react";
 
 import {
-    CursorContext,
     defaultCursorState,
+    useCursor,
 } from "@/components/elements/cursorContext";
 
 type ButtonAtomProps = {
@@ -28,7 +28,7 @@ export default function ButtonAtom({
 
     const buttonRef = useRef<HTMLButtonElement>(null);
 
-    const { setHovered } = useContext(CursorContext);
+    const { setHovered } = useCursor();
 
     const hoverCursorState: CursorState = {
         isHovered: true,

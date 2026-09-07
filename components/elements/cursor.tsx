@@ -2,20 +2,20 @@
 
 import { hoverType } from "@/lib/types";
 
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 
 import { animated, useSpring } from "@react-spring/web";
 
 import { LuArrowUpRight } from "react-icons/lu";
 
-import { CursorContext } from "@/components/elements/cursorContext";
+import { useCursor } from "@/components/elements/cursorContext";
 
 const shapeshiftHoverTypes: hoverType[] = [hoverType.button];
 
 export default function Cursor() {
     const hideDistance = 5; // Distance from the edge of the screen to hide the cursor
 
-    const { hovered } = useContext(CursorContext);
+    const { hovered } = useCursor();
 
     const [cursorVisible, setCursorVisible] = useState<boolean>(true);
     const [cursorClick, setCursorClick] = useState<boolean>(false);
