@@ -16,6 +16,7 @@ type navLinkAtomProps = {
     href: string;
     title?: string; // Not for actual use, to consume accidental title prop
     className?: string;
+    disabled?: boolean;
     children: React.ReactNode;
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
@@ -24,6 +25,7 @@ export default function NavLinkAtom({
     title,
     children,
     className,
+    disabled,
     ...props
 }: navLinkAtomProps) {
     const navLinkRef = useRef<HTMLAnchorElement>(null);
@@ -48,7 +50,7 @@ export default function NavLinkAtom({
             href={href}
             onMouseEnter={() => setHovered(hoverCursorState)}
             onMouseLeave={() => setHovered(defaultCursorState)}
-            className={`${className} cursor-none motion-reduce:cursor-pointer`}
+            className={`${className} ${disabled ? "pointer-events-none" : ""} cursor-none motion-reduce:cursor-pointer`}
             {...props}
         >
             {children}
