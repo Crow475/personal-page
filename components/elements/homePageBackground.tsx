@@ -52,7 +52,10 @@ export default function HomePageBackground() {
     });
 
     return (
-        <div className="absolute top-0 left-0 -z-10 h-svh w-full">
+        <div
+            className="absolute top-0 left-0 -z-10 h-svh w-full"
+            role="presentation"
+        >
             <div className="absolute z-10 flex h-full w-full bg-linear-to-r from-black from-20% to-transparent" />
             <div className="absolute z-10 flex h-full w-full bg-linear-to-l from-black to-transparent to-5%" />
             <div className="absolute z-10 flex h-full w-full bg-linear-to-b from-black to-transparent to-5%" />
