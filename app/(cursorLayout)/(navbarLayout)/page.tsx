@@ -6,9 +6,12 @@ import TestButton from "@/components/atoms/testButton";
 import LinkAtom from "@/components/atoms/link";
 import ButtonAtom from "@/components/atoms/button";
 
+import HomePageBackground from "@/components/elements/homePageBackground";
+
 export default function Home() {
     return (
-        <div className="h-[200vh]">
+        <div className="relative h-[200vh] w-full">
+            <HomePageBackground />
             <h1 className={`${inter.className} text-9xl font-black text-white`}>
                 Hi
                 <br />
