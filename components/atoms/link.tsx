@@ -52,7 +52,7 @@ export default function LinkAtom({
                 onMouseEnter={() => setHovered(hoverCursorState)}
                 onMouseLeave={() => setHovered(defaultCursorState)}
                 aria-describedby={titleId}
-                className={`${className} cursor-none motion-reduce:cursor-pointer`}
+                className={`${className} cursor-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white/80 motion-reduce:cursor-pointer`}
                 {...props}
             >
                 {children}

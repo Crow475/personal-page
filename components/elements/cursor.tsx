@@ -8,14 +8,17 @@ import { animated, useSpring } from "@react-spring/web";
 
 import { LuArrowUpRight } from "react-icons/lu";
 
-import { useCursor } from "@/components/elements/cursorContext";
+import {
+    useCursor,
+    defaultCursorState,
+} from "@/components/elements/cursorContext";
 
 const shapeshiftHoverTypes: hoverType[] = [hoverType.button];
 
 export default function Cursor() {
     const hideDistance = 5; // Distance from the edge of the screen to hide the cursor
 
-    const { hovered } = useCursor();
+    const { hovered, setHovered } = useCursor();
 
     const [cursorVisible, setCursorVisible] = useState<boolean>(true);
     const [cursorClick, setCursorClick] = useState<boolean>(false);
@@ -28,6 +31,11 @@ export default function Cursor() {
         : null;
 
     useEffect(() => {
+        // If the hovered element is no longer in the DOM, reset the cursor state
+        if (!rect && hovered.isHovered) {
+            setHovered(defaultCursorState);
+        }
+
         const handleMouseMove = (event: MouseEvent) => {
             const newCursorPos = {
                 x: event.clientX,
@@ -89,7 +97,7 @@ export default function Cursor() {
             window.removeEventListener("mousedown", handleMouseDown);
             window.removeEventListener("mouseup", handleMouseUp);
         };
-    }, [hovered, rect]);
+    }, [hovered, rect, setHovered]);
 
     const { height, width } = useSpring({
         height:

@@ -16,7 +16,7 @@ export default function Home() {
             >
                 <h1 className="flex flex-col items-start justify-start pb-5">
                     <span
-                        className={`${kanit.className} text-[200px] leading-none font-black text-white`}
+                        className={`${kanit.className} text-[200px] leading-none font-black tracking-tight text-white`}
                     >
                         Hi
                     </span>
