@@ -20,7 +20,11 @@ type navLinkAtomProps = {
     children: React.ReactNode;
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export default function NavLinkAtom({
+/**
+ * Button-like link
+ * (FOR INTERNAL LINKS ONLY)
+ */
+export default function ButtonLinkAtom({
     href,
     title,
     children,

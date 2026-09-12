@@ -12,6 +12,9 @@ const CursorContext = createContext<
     | undefined
 >(undefined);
 
+/**
+ * Default cursor state
+ */
 const defaultCursorState: CursorState = {
     isHovered: false,
     hoveredRef: null,
@@ -19,6 +22,10 @@ const defaultCursorState: CursorState = {
     hoverMessage: null,
 };
 
+/**
+ * Provider for cursor context.
+ * Wrap your app with this to use the cursor context.
+ */
 function CursorProvider({ children }: { children: React.ReactNode }) {
     const [hovered, setHovered] = useState(defaultCursorState);
 
@@ -29,6 +36,10 @@ function CursorProvider({ children }: { children: React.ReactNode }) {
     );
 }
 
+/**
+ * Hook that provides cursor context.
+ * Must be used within CursorProvider
+ */
 function useCursor() {
     const context = useContext(CursorContext);
 

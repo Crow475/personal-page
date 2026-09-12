@@ -19,6 +19,9 @@ type LinkAtomProps = {
     children: React.ReactNode;
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
+/**
+ * Default link component
+ */
 export default function LinkAtom({
     href,
     title,

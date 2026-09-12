@@ -16,6 +16,9 @@ type ButtonAtomProps = {
     children: React.ReactNode;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
+/**
+ * Default button component
+ */
 export default function ButtonAtom({
     title,
     className,
