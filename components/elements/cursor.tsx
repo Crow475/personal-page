@@ -134,7 +134,7 @@ export default function Cursor() {
         >
             <div className="flex flex-col items-center justify-center">
                 {hovered.isHovered && hovered.hoverType === hoverType.link && (
-                    <LuArrowUpRight className="text-white mix-blend-difference" />
+                    <LuArrowUpRight className="text-blue-500 mix-blend-difference" />
                 )}
             </div>
             <div

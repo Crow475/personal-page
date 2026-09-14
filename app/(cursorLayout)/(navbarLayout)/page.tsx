@@ -3,8 +3,8 @@
 import { inter, kanit } from "@/lib/fonts";
 
 import HomePageBackground from "@/components/elements/homePageBackground";
-
 import CTALink from "@/components/molecules/ctaLink";
+import HomeSection from "@/components/molecules/homeSection";
 
 export default function Home() {
     return (
@@ -35,12 +35,24 @@ export default function Home() {
                         variant="secondary"
                     />
                     <CTALink
-                        href="/#contact"
+                        href="#contact"
                         text="Contact me"
                         variant="primary"
                     />
                 </div>
             </article>
+            <HomeSection
+                title="Project showcase"
+                href="/projects"
+                id="projects"
+                linkTitle="View all the stuff I've done"
+            ></HomeSection>
+            <HomeSection
+                title="About me"
+                href="/about"
+                id="about"
+            ></HomeSection>
+            <HomeSection title="My contacts" id="contact"></HomeSection>
         </main>
     );
 }
