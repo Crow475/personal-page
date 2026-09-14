@@ -16,6 +16,9 @@ type ButtonAtomProps = {
     children: React.ReactNode;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
+/**
+ * Default button component
+ */
 export default function ButtonAtom({
     title,
     className,
@@ -44,7 +47,7 @@ export default function ButtonAtom({
                 onMouseEnter={() => setHovered(hoverCursorState)}
                 onMouseLeave={() => setHovered(defaultCursorState)}
                 aria-describedby={titleId}
-                className={`${className} z-30 cursor-none motion-reduce:cursor-pointer`}
+                className={`${className} z-30 cursor-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white motion-reduce:cursor-pointer`}
                 {...props}
             >
                 {children}

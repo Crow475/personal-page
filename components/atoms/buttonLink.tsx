@@ -20,7 +20,11 @@ type navLinkAtomProps = {
     children: React.ReactNode;
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export default function NavLinkAtom({
+/**
+ * Button-like link
+ * (FOR INTERNAL LINKS ONLY)
+ */
+export default function ButtonLinkAtom({
     href,
     title,
     children,
@@ -50,7 +54,7 @@ export default function NavLinkAtom({
             href={href}
             onMouseEnter={() => setHovered(hoverCursorState)}
             onMouseLeave={() => setHovered(defaultCursorState)}
-            className={`${className} ${disabled ? "pointer-events-none" : ""} cursor-none motion-reduce:cursor-pointer`}
+            className={`${className} ${disabled ? "pointer-events-none" : ""} cursor-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white/80 motion-reduce:cursor-pointer`}
             {...props}
         >
             {children}

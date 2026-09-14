@@ -1,41 +1,58 @@
 "use client";
 
-import { inter } from "@/lib/fonts";
+import { inter, kanit } from "@/lib/fonts";
 
-import TestButton from "@/components/atoms/testButton";
-import LinkAtom from "@/components/atoms/link";
-import ButtonAtom from "@/components/atoms/button";
+import HomePageBackground from "@/components/elements/homePageBackground";
+import CTALink from "@/components/molecules/ctaLink";
+import HomeSection from "@/components/molecules/homeSection";
 
 export default function Home() {
     return (
-        <div className="h-[200vh]">
-            <h1 className={`${inter.className} text-9xl font-black text-white`}>
-                Hi
-                <br />
-                this is a Test
-            </h1>
-            <div className="flex flex-col items-start justify-start space-y-1">
-                <span className="text-2xl text-white">Test</span>
-                <TestButton />
-                <LinkAtom
-                    href="/test"
-                    title="Test Link title"
-                    target="_blank"
-                    className="text-white underline"
-                >
-                    Test Link
-                </LinkAtom>
-                <span className="text-white">Lorem ipsum dolor set amet</span>
-                <ButtonAtom
-                    onClick={() => {
-                        alert("test button clicked");
-                    }}
-                    className="rounded-lg border-2 border-white/20 bg-transparent px-4 py-2 text-white hover:border-transparent hover:bg-white/20 motion-reduce:cursor-pointer"
-                    title="Test Button title"
-                >
-                    Test Button
-                </ButtonAtom>
-            </div>
-        </div>
+        <main className="relative w-full">
+            <HomePageBackground />
+            <div className="h-20" role="presentation" />
+            <article
+                className={`${inter.className} flex h-[calc(100svh-5rem)] flex-col items-start justify-start space-y-4 px-10`}
+            >
+                <h1 className="flex flex-col items-start justify-start pb-5">
+                    <span
+                        className={`${kanit.className} text-[200px] leading-none font-black tracking-tight text-white`}
+                    >
+                        Hi
+                    </span>
+                    <br />
+                    <span className="text-7xl font-black text-white">
+                        my name is Artem
+                    </span>
+                </h1>
+                <p className="text-xl text-neutral-400">
+                    I do web development, programming and other stuff
+                </p>
+                <div className="flex flex-row items-center justify-start space-x-4 pt-10 pl-2">
+                    <CTALink
+                        href="/projects"
+                        text="My projects"
+                        variant="secondary"
+                    />
+                    <CTALink
+                        href="#contact"
+                        text="Contact me"
+                        variant="primary"
+                    />
+                </div>
+            </article>
+            <HomeSection
+                title="Project showcase"
+                href="/projects"
+                id="projects"
+                linkTitle="View all the stuff I've done"
+            ></HomeSection>
+            <HomeSection
+                title="About me"
+                href="/about"
+                id="about"
+            ></HomeSection>
+            <HomeSection title="My contacts" id="contact"></HomeSection>
+        </main>
     );
 }
