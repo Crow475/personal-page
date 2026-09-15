@@ -8,11 +8,11 @@ import HomeSection from "@/components/molecules/homeSection";
 
 export default function Home() {
     return (
-        <main className="relative w-full">
+        <main className="relative flex w-full flex-col items-center justify-start">
             <HomePageBackground />
             <div className="h-20" role="presentation" />
             <article
-                className={`${inter.className} flex h-[calc(100svh-5rem)] flex-col items-start justify-start space-y-4 px-10`}
+                className={`${inter.className} flex h-[calc(100svh-5rem)] w-full flex-col items-start justify-start space-y-4 px-10`}
             >
                 <h1 className="flex flex-col items-start justify-start pb-5">
                     <span
