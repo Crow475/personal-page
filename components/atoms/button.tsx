@@ -1,14 +1,9 @@
 "use client";
 
-import type { CursorState } from "@/lib/types";
-import { hoverType } from "@/lib/types";
-
 import { useRef, useId } from "react";
 
-import {
-    defaultCursorState,
-    useCursor,
-} from "@/components/elements/cursorContext";
+import { useCursor, defaultCursorState, HoverType } from "@/lib/cursorLib";
+import type { CursorState } from "@/lib/cursorLib";
 
 type ButtonAtomProps = {
     title?: string;
@@ -36,7 +31,7 @@ export default function ButtonAtom({
     const hoverCursorState: CursorState = {
         isHovered: true,
         hoveredRef: buttonRef,
-        hoverType: hoverType.button,
+        hoverType: HoverType.button,
         hoverMessage: titleText,
     };
 

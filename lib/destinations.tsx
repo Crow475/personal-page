@@ -1,12 +1,16 @@
-import type { NavDestination } from "@/lib/types";
-
 import { LuHouse, LuUser, LuSquareTerminal } from "react-icons/lu";
+
+type NavDestination = {
+    href: string;
+    title: string;
+    icon: React.ReactNode;
+};
 
 /**
  * Static list of navigation destinations for all pages.
  * To be used in all navigation components (navbar, footer, etc.)
  */
-const destinations: NavDestination[] = [
+const Destinations: NavDestination[] = [
     {
         href: "/",
         title: "Home",
@@ -24,4 +28,4 @@ const destinations: NavDestination[] = [
     },
 ];
 
-export default destinations;
+export { Destinations, type NavDestination };

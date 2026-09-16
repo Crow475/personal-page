@@ -1,6 +1,6 @@
 "use client";
 
-import { CursorProvider } from "@/components/elements/cursorContext";
+import { CursorProvider } from "@/lib/cursorLib";
 
 import Cursor from "@/components/elements/cursor";
 

@@ -1,7 +1,5 @@
 "use client";
 
-import { hoverType } from "@/lib/types";
-
 import { useEffect, useState } from "react";
 
 import { animated, useSpring } from "@react-spring/web";
@@ -10,10 +8,10 @@ import { LuArrowUpRight } from "react-icons/lu";
 
 import {
     useCursor,
+    HoverType,
     defaultCursorState,
-} from "@/components/elements/cursorContext";
-
-const shapeshiftHoverTypes: hoverType[] = [hoverType.button];
+    ShapeshiftHoverTypes,
+} from "@/lib/cursorLib";
 
 export default function Cursor() {
     const hideDistance = 5; // Distance from the edge of the screen to hide the cursor
@@ -47,7 +45,7 @@ export default function Cursor() {
             if (
                 hovered.isHovered &&
                 hovered.hoverType &&
-                shapeshiftHoverTypes.includes(hovered.hoverType) &&
+                ShapeshiftHoverTypes.includes(hovered.hoverType) &&
                 rect
             ) {
                 const targetCenterX = rect.left + rect.width / 2;
@@ -103,13 +101,13 @@ export default function Cursor() {
         height:
             hovered.isHovered &&
             hovered.hoverType &&
-            shapeshiftHoverTypes.includes(hovered.hoverType)
+            ShapeshiftHoverTypes.includes(hovered.hoverType)
                 ? rect?.height || 0
                 : 16,
         width:
             hovered.isHovered &&
             hovered.hoverType &&
-            shapeshiftHoverTypes.includes(hovered.hoverType)
+            ShapeshiftHoverTypes.includes(hovered.hoverType)
                 ? rect?.width || 0
                 : 16,
         config: { mass: 1, tension: 300, friction: 20 },
@@ -123,7 +121,7 @@ export default function Cursor() {
 
     return (
         <animated.div
-            className={`pointer-events-none ${cursorVisible ? "absolute motion-reduce:hidden" : "hidden"} ${hovered.isHovered && hovered.hoverType === hoverType.button ? "z-20" : "z-50"} rounded-lg border border-t-white/50 border-r-neutral-100/5 border-b-neutral-100/5 border-l-white/50 bg-radial-[at_25%_25%] from-slate-300/40 to-slate-50/20 backdrop-blur-3xl`}
+            className={`pointer-events-none ${cursorVisible ? "absolute motion-reduce:hidden" : "hidden"} ${hovered.isHovered && hovered.hoverType === HoverType.button ? "z-20" : "z-50"} rounded-lg border border-t-white/50 border-r-neutral-100/5 border-b-neutral-100/5 border-l-white/50 bg-radial-[at_25%_25%] from-slate-300/40 to-slate-50/20 backdrop-blur-3xl`}
             role="presentation"
             style={{
                 left: x.to((x_to) => `${x_to}px`),
@@ -133,7 +131,7 @@ export default function Cursor() {
             }}
         >
             <div className="flex flex-col items-center justify-center">
-                {hovered.isHovered && hovered.hoverType === hoverType.link && (
+                {hovered.isHovered && hovered.hoverType === HoverType.link && (
                     <LuArrowUpRight className="text-blue-500 mix-blend-difference" />
                 )}
             </div>

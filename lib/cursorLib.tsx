@@ -1,7 +1,5 @@
 "use client";
 
-import type { CursorState } from "@/lib/types";
-
 import { createContext, useContext, useState } from "react";
 
 const CursorContext = createContext<
@@ -11,6 +9,29 @@ const CursorContext = createContext<
       }
     | undefined
 >(undefined);
+
+/**
+ * Types of hover states for the cursor
+ */
+enum HoverType {
+    button = "Button",
+    link = "Link",
+}
+
+/**
+ * Hover types that should cause the cursor to shapeshift
+ */
+const ShapeshiftHoverTypes: HoverType[] = [HoverType.button];
+
+/**
+ * State of the cursor hover
+ */
+type CursorState = {
+    isHovered: boolean;
+    hoveredRef: React.RefObject<HTMLElement | null> | null;
+    hoverType: HoverType | null;
+    hoverMessage: string | null;
+};
 
 /**
  * Default cursor state
@@ -50,4 +71,11 @@ function useCursor() {
     return context;
 }
 
-export { CursorProvider, useCursor, defaultCursorState };
+export {
+    type CursorState,
+    CursorProvider,
+    useCursor,
+    defaultCursorState,
+    HoverType,
+    ShapeshiftHoverTypes,
+};

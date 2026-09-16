@@ -1,6 +1,6 @@
 "use client";
 
-import type { NavDestination } from "@/lib/types";
+import type { NavDestination } from "@/lib/destinations";
 
 import { usePathname } from "next/navigation";
 
