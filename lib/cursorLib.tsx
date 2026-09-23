@@ -6,6 +6,10 @@ const CursorContext = createContext<
     | {
           hovered: CursorState;
           setHovered: React.Dispatch<React.SetStateAction<CursorState>>;
+          overrideLocation?: { x: number; y: number } | null;
+          setOverrideLocation: React.Dispatch<
+              React.SetStateAction<{ x: number; y: number } | null>
+          >;
       }
     | undefined
 >(undefined);
@@ -16,6 +20,7 @@ const CursorContext = createContext<
 enum HoverType {
     button = "Button",
     link = "Link",
+    drag = "Drag",
 }
 
 /**
@@ -49,9 +54,20 @@ const defaultCursorState: CursorState = {
  */
 function CursorProvider({ children }: { children: React.ReactNode }) {
     const [hovered, setHovered] = useState(defaultCursorState);
+    const [overrideLocation, setOverrideLocation] = useState<{
+        x: number;
+        y: number;
+    } | null>(null);
 
     return (
-        <CursorContext.Provider value={{ hovered, setHovered }}>
+        <CursorContext.Provider
+            value={{
+                hovered,
+                setHovered,
+                overrideLocation,
+                setOverrideLocation,
+            }}
+        >
             {children}
         </CursorContext.Provider>
     );

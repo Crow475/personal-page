@@ -19,8 +19,6 @@ export default async function Footer() {
 
     const currentYear = new Date().getFullYear();
 
-    console.log("info", info);
-
     return (
         <div className="flex w-full flex-col items-center justify-center pb-10">
             <footer className="relative flex w-[95%] flex-col items-center justify-between rounded-2xl border border-white/50 py-8">

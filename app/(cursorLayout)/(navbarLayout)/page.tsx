@@ -6,6 +6,9 @@ import HomePageBackground from "@/components/elements/homePageBackground";
 import CTALink from "@/components/molecules/ctaLink";
 import HomeSection from "@/components/molecules/homeSection";
 
+// import Map from "@/components/atoms/map";
+import DraggableMap from "@/components/atoms/draggableMap";
+
 export default function Home() {
     return (
         <main className="relative flex w-full flex-col items-center justify-start">
@@ -52,7 +55,15 @@ export default function Home() {
                 href="/about"
                 id="about"
             ></HomeSection>
-            <HomeSection title="My contacts" id="contact"></HomeSection>
+            <HomeSection title="My contacts" id="contact">
+                <DraggableMap
+                    marker={[44.7925, 41.7225]}
+                    scale={400}
+                    width={300}
+                    height={300}
+                    className="relative flex h-75 w-75 flex-col items-center justify-center border border-white/50"
+                />
+            </HomeSection>
         </main>
     );
 }
