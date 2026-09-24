@@ -1,13 +1,10 @@
-"use client";
-
 import { inter, kanit } from "@/lib/fonts";
 
 import HomePageBackground from "@/components/elements/homePageBackground";
 import CTALink from "@/components/molecules/ctaLink";
 import HomeSection from "@/components/molecules/homeSection";
 
-// import Map from "@/components/atoms/map";
-import DraggableMap from "@/components/atoms/draggableMap";
+import MyLocation from "@/components/molecules/myLocation";
 
 export default function Home() {
     return (
@@ -56,13 +53,7 @@ export default function Home() {
                 id="about"
             ></HomeSection>
             <HomeSection title="My contacts" id="contact">
-                <DraggableMap
-                    marker={[44.7925, 41.7225]}
-                    scale={400}
-                    width={300}
-                    height={300}
-                    className="relative flex h-75 w-75 flex-col items-center justify-center border border-white/50"
-                />
+                <MyLocation />
             </HomeSection>
         </main>
     );

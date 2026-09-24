@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Inter, Kanit } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Kanit, Silkscreen } from "next/font/google";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -19,4 +19,9 @@ const kanit = Kanit({
     weight: ["600"],
 });
 
-export { geistSans, geistMono, inter, kanit };
+const silkscreen = Silkscreen({
+    subsets: ["latin", "latin-ext"],
+    weight: ["400"],
+});
+
+export { geistSans, geistMono, inter, kanit, silkscreen };
