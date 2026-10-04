@@ -2,6 +2,8 @@
 
 import { LuCopy } from "react-icons/lu";
 
+import toast from "react-hot-toast";
+
 import LinkAtom from "@/components/atoms/link";
 import ButtonAtom from "@/components/atoms/button";
 
@@ -93,6 +95,7 @@ export default function ContactElement({
                         title={copyDescription}
                         onClick={() => {
                             navigator.clipboard.writeText(copyContent);
+                            toast.success("Copied to clipboard!");
                         }}
                     >
                         <LuCopy className="text-lg text-neutral-100" />
