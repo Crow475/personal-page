@@ -73,7 +73,7 @@ export default function ContactElement({
     return (
         <section className="group flex flex-row items-start justify-start space-x-2">
             <div
-                className={`flex flex-col items-center justify-center rounded-full border border-t-white/30 border-r-neutral-300/30 border-b-neutral-300/30 border-l-white/30 p-2 transition-all duration-300 ${variants[variant].iconBackground} ${variants[variant].iconBakgroundHover}`}
+                className={`flex flex-col items-center justify-center rounded-full border border-t-neutral-400/50 border-r-neutral-500/50 border-b-neutral-500/50 border-l-neutral-400/50 p-2 transition-all duration-300 ${variants[variant].iconBackground} ${variants[variant].iconBakgroundHover}`}
             >
                 {icon}
             </div>

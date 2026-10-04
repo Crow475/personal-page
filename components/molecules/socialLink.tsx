@@ -14,7 +14,7 @@ export default function SocialLink({
             href={href}
             className="flex flex-row items-center justify-center rounded-full p-0.5"
         >
-            <div className="group z-30 flex flex-row items-center justify-center space-x-2 rounded-4xl border border-white/50 p-1 transition-all duration-200 hover:rounded-lg">
+            <div className="group z-30 flex flex-row items-center justify-center space-x-2 rounded-4xl border border-t-neutral-400/50 border-r-neutral-500/50 border-b-neutral-500/50 border-l-neutral-400/50 p-1 transition-all duration-200 hover:rounded-lg">
                 {children}
             </div>
             <span className="sr-only">{text}</span>
