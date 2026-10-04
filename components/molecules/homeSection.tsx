@@ -64,7 +64,7 @@ export default function HomeSection({
     id?: string;
 }) {
     return (
-        <article className="flex h-svh w-full flex-col items-center justify-start py-6">
+        <article className="flex min-h-svh w-full flex-col items-center justify-start py-6">
             <div className="flex h-full w-[95%] flex-col items-center justify-between px-8">
                 <div className="flex w-full flex-row items-center border-b border-neutral-500/50 pb-4">
                     {href ? (

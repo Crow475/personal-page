@@ -1,24 +1,22 @@
 "use client";
 
-import { hoverType } from "@/lib/types";
-
 import { useEffect, useState } from "react";
 
 import { animated, useSpring } from "@react-spring/web";
 
-import { LuArrowUpRight } from "react-icons/lu";
+import { LuArrowUpRight, LuMove } from "react-icons/lu";
 
 import {
     useCursor,
+    HoverType,
     defaultCursorState,
-} from "@/components/elements/cursorContext";
-
-const shapeshiftHoverTypes: hoverType[] = [hoverType.button];
+    ShapeshiftHoverTypes,
+} from "@/lib/cursorLib";
 
 export default function Cursor() {
     const hideDistance = 5; // Distance from the edge of the screen to hide the cursor
 
-    const { hovered, setHovered } = useCursor();
+    const { hovered, setHovered, overrideLocation } = useCursor();
 
     const [cursorVisible, setCursorVisible] = useState<boolean>(true);
     const [cursorClick, setCursorClick] = useState<boolean>(false);
@@ -47,7 +45,7 @@ export default function Cursor() {
             if (
                 hovered.isHovered &&
                 hovered.hoverType &&
-                shapeshiftHoverTypes.includes(hovered.hoverType) &&
+                ShapeshiftHoverTypes.includes(hovered.hoverType) &&
                 rect
             ) {
                 const targetCenterX = rect.left + rect.width / 2;
@@ -62,8 +60,12 @@ export default function Cursor() {
                 });
             } else {
                 setCursorPos({
-                    x: newCursorPos.x - 8, // Adjust for cursor size (16px / 2)
-                    y: newCursorPos.y - 8, // Adjust for cursor size (16px / 2)
+                    x: overrideLocation
+                        ? overrideLocation.x - 8
+                        : newCursorPos.x - 8, // Adjust for cursor size (16px / 2)
+                    y: overrideLocation
+                        ? overrideLocation.y - 8
+                        : newCursorPos.y - 8, // Adjust for cursor size (16px / 2)
                 });
             }
 
@@ -97,33 +99,33 @@ export default function Cursor() {
             window.removeEventListener("mousedown", handleMouseDown);
             window.removeEventListener("mouseup", handleMouseUp);
         };
-    }, [hovered, rect, setHovered]);
+    }, [hovered, rect, setHovered, overrideLocation]);
 
     const { height, width } = useSpring({
         height:
             hovered.isHovered &&
             hovered.hoverType &&
-            shapeshiftHoverTypes.includes(hovered.hoverType)
+            ShapeshiftHoverTypes.includes(hovered.hoverType)
                 ? rect?.height || 0
                 : 16,
         width:
             hovered.isHovered &&
             hovered.hoverType &&
-            shapeshiftHoverTypes.includes(hovered.hoverType)
+            ShapeshiftHoverTypes.includes(hovered.hoverType)
                 ? rect?.width || 0
                 : 16,
         config: { mass: 1, tension: 300, friction: 20 },
     });
 
     const { x, y } = useSpring({
-        x: cursorPos.x,
-        y: cursorPos.y,
+        x: overrideLocation ? overrideLocation.x : cursorPos.x,
+        y: overrideLocation ? overrideLocation.y : cursorPos.y,
         config: { mass: 0.1, tension: 100, friction: 5 },
     });
 
     return (
         <animated.div
-            className={`pointer-events-none ${cursorVisible ? "absolute motion-reduce:hidden" : "hidden"} ${hovered.isHovered && hovered.hoverType === hoverType.button ? "z-20" : "z-50"} rounded-lg border border-t-white/50 border-r-neutral-100/5 border-b-neutral-100/5 border-l-white/50 bg-radial-[at_25%_25%] from-slate-300/40 to-slate-50/20 backdrop-blur-3xl`}
+            className={`pointer-events-none ${cursorVisible ? "absolute motion-reduce:hidden" : "hidden"} ${hovered.isHovered && hovered.hoverType === HoverType.button ? "z-20" : "z-50"} rounded-lg border border-t-white/50 border-r-neutral-100/5 border-b-neutral-100/5 border-l-white/50 bg-radial-[at_25%_25%] from-slate-300/40 to-slate-50/20 backdrop-blur-3xl`}
             role="presentation"
             style={{
                 left: x.to((x_to) => `${x_to}px`),
@@ -133,8 +135,11 @@ export default function Cursor() {
             }}
         >
             <div className="flex flex-col items-center justify-center">
-                {hovered.isHovered && hovered.hoverType === hoverType.link && (
-                    <LuArrowUpRight className="text-blue-500 mix-blend-difference" />
+                {hovered.isHovered && hovered.hoverType === HoverType.link && (
+                    <LuArrowUpRight className="text-white drop-shadow-sm drop-shadow-black" />
+                )}
+                {hovered.isHovered && hovered.hoverType === HoverType.drag && (
+                    <LuMove className="text-white drop-shadow-sm drop-shadow-black" />
                 )}
             </div>
             <div
