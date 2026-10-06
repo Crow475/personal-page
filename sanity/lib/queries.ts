@@ -1,7 +1,15 @@
 import { defineQuery } from "next-sanity";
 
 export const infoQuery = defineQuery(
-    `*[_type == "info"][0]{"imageUrl": avatar.asset->url}`,
+    `*[_type == "info"][0]{"imageUrl": avatar.asset->url, "mainSocials": socialsMain[]->, "secondarySocials": socialsSecondary[]->}`,
+);
+
+export const infoFooterQuery = defineQuery(
+    `*[_type == "info"][0]{"imageUrl": avatar.asset->url, "footerSocials": socialsFooter[]->, "footerEmail": footerEmail->}`,
+);
+
+export const infoSocialsQuery = defineQuery(
+    `*[_type == "info"][0]{"mainSocials": socialsMain[]->, "secondarySocials": socialsSecondary[]->}`,
 );
 
 export const locationQuery = defineQuery(

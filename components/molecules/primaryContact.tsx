@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 
 import LinkAtom from "@/components/atoms/link";
 import ButtonAtom from "@/components/atoms/button";
+import { SocialType, typeToText } from "@/lib/socials";
 
 import { geistMono } from "@/lib/fonts";
 
@@ -15,14 +16,7 @@ type VariantSpec = {
     borderColor: string;
 };
 
-enum ContactElementVariants {
-    EMAIL = "EMAIL",
-    TELEGRAM = "TELEGRAM",
-    GITHUB = "GITHUB",
-    LINKEDIN = "LINKEDIN",
-}
-
-const variants: { [key in ContactElementVariants]: VariantSpec } = {
+const variants: Partial<Record<SocialType, VariantSpec>> = {
     EMAIL: {
         iconBackground:
             "bg-radial-[at_50%_75%] from-orange-400/20 to-orange-300/10",
@@ -53,9 +47,8 @@ const variants: { [key in ContactElementVariants]: VariantSpec } = {
     },
 };
 
-export default function ContactElement({
+export default function PrimaryContact({
     variant,
-    header,
     title,
     description,
     copyDescription,
@@ -63,8 +56,7 @@ export default function ContactElement({
     href,
     icon,
 }: {
-    variant: keyof typeof ContactElementVariants;
-    header: string;
+    variant: keyof typeof SocialType;
     title: string;
     description: string;
     copyDescription: string;
@@ -75,12 +67,14 @@ export default function ContactElement({
     return (
         <section className="group flex flex-row items-start justify-start space-x-2">
             <div
-                className={`flex flex-col items-center justify-center rounded-full border border-t-neutral-400/50 border-r-neutral-500/50 border-b-neutral-500/50 border-l-neutral-400/50 p-2 transition-all duration-300 ${variants[variant].iconBackground} ${variants[variant].iconBakgroundHover}`}
+                className={`flex flex-col items-center justify-center rounded-full border border-t-neutral-400/50 border-r-neutral-500/50 border-b-neutral-500/50 border-l-neutral-400/50 p-2 transition-all duration-300 ${variants[variant]?.iconBackground} ${variants[variant]?.iconBakgroundHover}`}
             >
                 {icon}
             </div>
             <div className="flex flex-col items-start justify-start space-y-4 px-3 py-1">
-                <h3 className="text-3xl font-bold text-white">{header}</h3>
+                <h3 className="text-3xl font-bold text-white">
+                    {typeToText[variant]}
+                </h3>
                 <div className="flex flex-row items-center justify-start space-x-2">
                     <LinkAtom
                         href={href}
@@ -102,7 +96,7 @@ export default function ContactElement({
                     </ButtonAtom>
                 </div>
                 <div
-                    className={`h-0 w-90 overflow-hidden border-l pl-3 transition-all duration-300 group-hover:h-20 ${variants[variant].borderColor}`}
+                    className={`h-0 w-90 overflow-hidden border-l pl-3 transition-all duration-300 group-hover:h-20 ${variants[variant]?.borderColor}`}
                 >
                     <p className="text-sm text-neutral-200">{description}</p>
                 </div>
