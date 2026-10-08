@@ -78,6 +78,7 @@ export default function PrimaryContact({
                 <div className="flex flex-row items-center justify-start space-x-2">
                     <LinkAtom
                         href={href}
+                        target="_blank"
                         className="flex flex-row items-center justify-start rounded-lg border border-t-neutral-400/50 border-r-neutral-500/50 border-b-neutral-500/50 border-l-neutral-400/50 bg-neutral-700/40 px-4 py-1 text-neutral-500 transition-all duration-100 hover:text-white hover:underline"
                     >
                         <span className={`text-lg ${geistMono.className}`}>

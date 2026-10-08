@@ -54,7 +54,7 @@ export default function Home() {
                 id="about"
             ></HomeSection>
             <HomeSection title="My contacts" id="contact">
-                <div className="flex h-svh w-full flex-row items-center justify-between">
+                <div className="flex w-full flex-row items-start justify-between">
                     <ContactsBlock />
                     <div className="flex h-full w-1/2 flex-row items-start justify-start py-12">
                         <MyLocation />
