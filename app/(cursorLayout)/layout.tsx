@@ -6,7 +6,11 @@ import { CursorProvider } from "@/lib/cursorLib";
 
 import Cursor from "@/components/elements/cursor";
 
-export default function CursorLayout({ children }: LayoutProps<"/">) {
+export default function CursorLayout({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
     return (
         <CursorProvider>
             <Toaster
