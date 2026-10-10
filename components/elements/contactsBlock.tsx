@@ -18,9 +18,9 @@ export default async function ContactsBlock() {
         GITHUB: <FaGithub className="text-3xl text-white" />,
         LINKEDIN: <FaLinkedin className="text-3xl text-white" />,
         MASTODON: <FaMastodon className="text-3xl text-white" />,
-        BLUESKY: <></>,
-        DISCORD: <></>,
-        SIGNAL: <></>,
+        BLUESKY: <FaBluesky className="text-3xl text-white" />,
+        DISCORD: <FaDiscord className="text-3xl text-white" />,
+        SIGNAL: <FaSignalMessenger className="text-3xl text-white" />,
     };
 
     const contactsBlockSecondarySocialIcons: typeToIcon = {

@@ -115,7 +115,7 @@ export default async function Footer() {
                     <div className="flex w-1/3 flex-col items-end justify-between space-y-4 px-10">
                         <div className="mx-10 flex h-32 w-32 flex-col items-center justify-start">
                             <Image
-                                src={info?.imageUrl || ""}
+                                src={`${info?.imageUrl}?auto=format` || ""}
                                 width={128}
                                 height={128}
                                 alt="Avatar"

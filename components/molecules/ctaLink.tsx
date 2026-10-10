@@ -1,6 +1,9 @@
 import ButtonLinkAtom from "@/components/atoms/buttonLink";
 
-const variants = ["primary", "secondary"] as const;
+enum variants {
+    primary = "primary",
+    secondary = "secondary",
+}
 
 export default function CTALink({
     href,
@@ -8,10 +11,11 @@ export default function CTALink({
     text,
 }: {
     href: string;
-    variant?: (typeof variants)[number];
+    variant?: keyof typeof variants;
     text: string;
 }) {
     let className = "";
+
     switch (variant) {
         case "primary":
             className =
