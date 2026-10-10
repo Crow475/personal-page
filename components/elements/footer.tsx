@@ -88,7 +88,7 @@ export default async function Footer() {
                             src="/4.svg"
                             width={80}
                             height={80}
-                            className="h-20 w-20"
+                            className="h-20 w-20 select-none"
                             alt=""
                             role="presentation"
                             unoptimized
@@ -97,7 +97,7 @@ export default async function Footer() {
                             src="/7.svg"
                             width={80}
                             height={80}
-                            className="h-20 w-20"
+                            className="h-20 w-20 select-none"
                             alt=""
                             role="presentation"
                             unoptimized
@@ -106,7 +106,7 @@ export default async function Footer() {
                             src="/5.svg"
                             width={80}
                             height={80}
-                            className="h-20 w-20"
+                            className="h-20 w-20 select-none"
                             alt=""
                             role="presentation"
                             unoptimized
