@@ -11,3 +11,11 @@ export const infoSocialsQuery = defineQuery(
 export const locationQuery = defineQuery(
     `*[_type == "location"][0]{header, latitude, longitude, address, timezone, description}`,
 );
+
+export const projectsQuery = defineQuery(
+    `*[_type == "project"]{"imageUrl": coverImage.asset->url, coverImageAlt, name, shortName, slug, shortDescription, codeLink}`,
+);
+
+export const homePageContentQuery = defineQuery(
+    `*[_type == "homePageContent"][0]{featuredProjects[]->{"imageUrl": coverImage.asset->url, coverImageAlt, name, shortName, slug, shortDescription, codeLink}}`,
+);

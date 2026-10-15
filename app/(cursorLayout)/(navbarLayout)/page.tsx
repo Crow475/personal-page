@@ -7,7 +7,14 @@ import HomeSection from "@/components/molecules/homeSection";
 import MyLocation from "@/components/molecules/myLocation";
 import ContactsBlock from "@/components/elements/contactsBlock";
 
-export default function Home() {
+import ProjectCard from "@/components/elements/projectCard";
+
+import getHomeData from "@/functions/getHomeData";
+
+export default async function Home() {
+    const data = await getHomeData();
+    const projects = data.featuredProjects;
+
     return (
         <main className="relative flex w-full flex-col items-center justify-start">
             <HomePageBackground />
@@ -47,7 +54,16 @@ export default function Home() {
                 href="/projects"
                 id="projects"
                 linkTitle="View all the stuff I've done"
-            ></HomeSection>
+            >
+                <div className="flex w-full flex-row items-center justify-start space-x-[1.3%] py-10">
+                    {projects.map((project) => (
+                        <ProjectCard
+                            key={`project-card-${project.slug}`}
+                            data={project}
+                        />
+                    ))}
+                </div>
+            </HomeSection>
             <HomeSection
                 title="About me"
                 href="/about"
