@@ -13,8 +13,29 @@ export const structure: StructureResolver = (S) =>
                 .child(
                     S.document().schemaType("location").documentId("location"),
                 ),
+            S.listItem()
+                .title("Pages")
+                .child(
+                    S.list()
+                        .title("Pages")
+                        .items([
+                            S.listItem()
+                                .title("Home Page Content")
+                                .child(
+                                    S.document()
+                                        .schemaType("homePageContent")
+                                        .documentId("homePageContent"),
+                                ),
+                        ]),
+                ),
+            S.listItem().title("Projects").child(S.documentTypeList("project")),
             ...S.documentTypeListItems().filter(
                 (listItem) =>
-                    !["info", "location"].includes(listItem.getId() as string),
+                    ![
+                        "info",
+                        "location",
+                        "project",
+                        "homePageContent",
+                    ].includes(listItem.getId() as string),
             ),
         ]);
