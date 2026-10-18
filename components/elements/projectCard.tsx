@@ -22,8 +22,9 @@ export default function ProjectCard({ data }: { data: ProjectData }) {
                     />
                 )}
             </div>
-            <div className="flex h-[45%] w-full flex-col items-start justify-between overflow-hidden rounded-b-xl bg-transparent from-slate-700/30 to-transparent px-4 pt-3 pb-4 transition-all duration-200 group-hover:h-[65%] group-hover:bg-radial-[at_50%_5%]">
-                <div className="flex w-full flex-row items-center justify-start border-b border-neutral-500/50 pb-1">
+            <div className="relative flex h-[45%] w-full flex-col items-start justify-between overflow-hidden rounded-b-xl bg-transparent from-slate-700/30 to-transparent px-4 pt-3 pb-4 transition-all duration-200 group-hover:h-[65%] group-hover:bg-radial-[at_50%_5%]">
+                <div className="absolute top-0 left-0 h-full w-full bg-transparent backdrop-blur-none group-hover:backdrop-blur-md" />
+                <div className="z-10 flex w-full flex-row items-center justify-start border-b border-neutral-500/50 pb-1">
                     <h3
                         className="line-clamp-2 text-2xl font-bold text-white"
                         id={`project-card-${data.slug}-header`}
@@ -31,7 +32,7 @@ export default function ProjectCard({ data }: { data: ProjectData }) {
                         {data.shortName}
                     </h3>
                 </div>
-                <div className="flex w-full grow flex-col items-center justify-start py-4">
+                <div className="z-10 flex w-full grow flex-col items-center justify-start py-4">
                     <div className="flex w-full flex-row flex-wrap items-center justify-start space-x-1">
                         <span className="rounded-2xl bg-neutral-700/50 px-3 py-0.5 text-sm font-bold text-white">
                             React
@@ -41,6 +42,9 @@ export default function ProjectCard({ data }: { data: ProjectData }) {
                         </span>
                         <span className="rounded-2xl bg-neutral-700/50 px-3 py-0.5 text-sm font-bold text-white">
                             TypeScript
+                        </span>
+                        <span className="rounded-2xl bg-neutral-700/50 px-3 py-0.5 text-sm font-bold text-white">
+                            ...
                         </span>
                     </div>
                     <p className="line-clamp-3 h-18 pt-2 text-sm text-neutral-400 transition-all duration-200 group-hover:line-clamp-none group-hover:h-30">

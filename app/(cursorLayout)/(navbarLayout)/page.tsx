@@ -53,7 +53,7 @@ export default async function Home() {
                 id="projects"
                 linkTitle="View all the stuff I've done"
             >
-                <div className="flex w-full flex-row items-center justify-start space-x-[1.3%] py-10">
+                <div className="flex w-full flex-row items-center justify-start space-x-[1.3%] bg-[url('/dots.svg')] bg-contain bg-repeat-x py-10">
                     {projects.map((project) => (
                         <ProjectCard
                             key={`project-card-${project.slug}`}
