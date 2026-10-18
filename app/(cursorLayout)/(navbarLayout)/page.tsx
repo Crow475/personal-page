@@ -33,24 +33,22 @@ export default async function Home() {
                         my name is Artem
                     </span>
                 </h1>
-                <p className="text-xl text-neutral-400">
-                    I do web development, programming and other stuff
-                </p>
+                <p className="text-xl text-neutral-400">{data.heroParagraph}</p>
                 <div className="flex flex-row items-center justify-start space-x-4 pt-10 pl-2">
                     <CTALink
                         href="/projects"
-                        text="My projects"
+                        text={data.projectsLinkText || ""}
                         variant="secondary"
                     />
                     <CTALink
                         href="#contact"
-                        text="Contact me"
+                        text={data.contactLinkText || ""}
                         variant="primary"
                     />
                 </div>
             </article>
             <HomeSection
-                title="Project showcase"
+                title={data.projectSectionTitle || ""}
                 href="/projects"
                 id="projects"
                 linkTitle="View all the stuff I've done"
@@ -65,11 +63,11 @@ export default async function Home() {
                 </div>
             </HomeSection>
             <HomeSection
-                title="About me"
+                title={data.aboutSectionTitle || ""}
                 href="/about"
                 id="about"
             ></HomeSection>
-            <HomeSection title="My contacts" id="contact">
+            <HomeSection title={data.contactSectionTitle || ""} id="contact">
                 <div className="flex w-full flex-row items-start justify-between">
                     <ContactsBlock />
                     <div className="flex h-full w-1/2 flex-row items-start justify-start py-12">

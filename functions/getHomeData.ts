@@ -8,7 +8,13 @@ import { homePageContentQuery } from "@/sanity/lib/queries";
 import type { ProjectData } from "@/lib/projects";
 
 type HomePageContent = {
+    heroParagraph?: string;
+    projectsLinkText?: string;
+    contactLinkText?: string;
+    projectSectionTitle?: string;
     featuredProjects: ProjectData[];
+    aboutSectionTitle?: string;
+    contactSectionTitle?: string;
 };
 
 export default async function getHomeData(): Promise<HomePageContent> {
@@ -34,5 +40,10 @@ export default async function getHomeData(): Promise<HomePageContent> {
         }),
     );
 
-    return { featuredProjects: projects };
+    // Destructure the query result to separate featuredProjects from the rest of the data
+    // featuredProjects is intentionally unused
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { featuredProjects, ...rest } = queryResult;
+
+    return { featuredProjects: projects, ...rest };
 }
