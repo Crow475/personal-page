@@ -1,12 +1,12 @@
 import { inter, kanit } from "@/lib/fonts";
 
-import HomePageBackground from "@/components/elements/homePageBackground";
 import CTALink from "@/components/molecules/ctaLink";
 import HomeSection from "@/components/molecules/homeSection";
-
 import MyLocation from "@/components/molecules/myLocation";
-import ContactsBlock from "@/components/elements/contactsBlock";
 
+import HomePageBackground from "@/components/elements/homePageBackground";
+import HomePageBottomDecoration from "@/components/elements/homePageBottomDecoration";
+import ContactsBlock from "@/components/elements/contactsBlock";
 import ProjectCard from "@/components/elements/projectCard";
 
 import getHomeData from "@/functions/getHomeData";
@@ -77,6 +77,7 @@ export default async function Home() {
                     </div>
                 </div>
             </HomeSection>
+            <HomePageBottomDecoration />
         </main>
     );
 }
