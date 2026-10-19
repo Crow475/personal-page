@@ -19,3 +19,7 @@ export const projectsQuery = defineQuery(
 export const homePageContentQuery = defineQuery(
     `*[_type == "homePageContent"][0]{featuredProjects[]->{"imageUrl": coverImage.asset->url, coverImageAlt, name, shortName, slug, shortDescription, codeLink}, heroParagraph, projectsLinkText, contactLinkText, projectSectionTitle, aboutSectionTitle, contactSectionTitle}`,
 );
+
+export const projectQuery = defineQuery(
+    `*[_type == "project" && slug.current == $slug][0]{"imageUrl": coverImage.asset->url, coverImageAlt, name, shortName, slug, shortDescription, codeLink, longDescription}`,
+);
