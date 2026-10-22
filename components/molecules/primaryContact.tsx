@@ -97,7 +97,7 @@ export default function PrimaryContact({
                     </ButtonAtom>
                 </div>
                 <div
-                    className={`h-0 w-90 overflow-hidden border-l pl-3 transition-all duration-300 group-hover:h-20 ${variants[variant]?.borderColor}`}
+                    className={`h-0 w-90 overflow-hidden border-l pl-3 transition-all duration-300 group-focus-within:h-20 group-hover:h-20 ${variants[variant]?.borderColor}`}
                 >
                     <p className="text-sm text-neutral-200">{description}</p>
                 </div>

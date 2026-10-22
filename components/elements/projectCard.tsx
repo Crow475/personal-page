@@ -11,7 +11,7 @@ export default function ProjectCard({ data }: { data: ProjectData }) {
             className="group flex h-120 w-[24%] flex-col items-start justify-start rounded-xl border border-neutral-500/50"
             aria-labelledby={`project-card-${data.slug}-header`}
         >
-            <div className="flex h-[55%] w-full rounded-t-xl transition-all duration-200 group-hover:h-[35%]">
+            <div className="flex h-[55%] w-full rounded-t-xl transition-all duration-200 group-focus-within:h-[35%] group-hover:h-[35%]">
                 {data.coverImage && (
                     <Image
                         src={`${data.coverImage}?auto=format`}
@@ -22,8 +22,8 @@ export default function ProjectCard({ data }: { data: ProjectData }) {
                     />
                 )}
             </div>
-            <div className="relative flex h-[45%] w-full flex-col items-start justify-between overflow-hidden rounded-b-xl bg-transparent from-slate-700/30 to-transparent px-4 pt-3 pb-4 transition-all duration-200 group-hover:h-[65%] group-hover:bg-radial-[at_50%_5%]">
-                <div className="absolute top-0 left-0 h-full w-full bg-transparent backdrop-blur-none group-hover:backdrop-blur-md" />
+            <div className="relative flex h-[45%] w-full flex-col items-start justify-between overflow-hidden rounded-b-xl bg-transparent from-slate-700/30 to-transparent px-4 pt-3 pb-4 transition-all duration-200 group-focus-within:h-[65%] group-focus-within:bg-radial-[at_50%_5%] group-hover:h-[65%] group-hover:bg-radial-[at_50%_5%]">
+                <div className="absolute top-0 left-0 h-full w-full bg-transparent backdrop-blur-none group-focus-within:backdrop-blur-md group-hover:backdrop-blur-md" />
                 <div className="z-10 flex w-full flex-row items-center justify-start border-b border-neutral-500/50 pb-1">
                     <h3
                         className="line-clamp-2 text-2xl font-bold text-white"
@@ -47,7 +47,7 @@ export default function ProjectCard({ data }: { data: ProjectData }) {
                             ...
                         </span>
                     </div>
-                    <p className="line-clamp-3 h-18 pt-2 text-sm text-neutral-400 transition-all duration-200 group-hover:line-clamp-none group-hover:h-30">
+                    <p className="line-clamp-3 h-18 pt-2 text-sm text-neutral-400 transition-all duration-200 group-focus-within:line-clamp-none group-focus-within:h-30 group-hover:line-clamp-none group-hover:h-30">
                         {data.shortDescription}
                     </p>
                 </div>
@@ -59,14 +59,14 @@ export default function ProjectCard({ data }: { data: ProjectData }) {
                             className="group/link flex flex-row"
                             title="View the project's source code"
                         >
-                            <span className="scale-0 font-bold text-white group-hover:scale-100 group-hover/link:underline">
+                            <span className="scale-0 font-bold text-white group-focus-within:scale-100 group-hover:scale-100 group-hover/link:underline group-focus/link:underline">
                                 Code
                             </span>
                         </LinkAtom>
                     )}
                     <ButtonLinkAtom
                         href={`/projects/${data.slug}`}
-                        className="z-40 flex scale-0 items-center justify-between space-x-2 rounded-lg border border-t-neutral-400/50 border-r-neutral-500/50 border-b-neutral-500/50 border-l-neutral-400/50 bg-neutral-800/50 px-3 py-1 transition-all duration-200 group-hover:scale-100 hover:bg-neutral-600/50"
+                        className="z-40 flex scale-0 items-center justify-between space-x-2 rounded-lg border border-t-neutral-400/50 border-r-neutral-500/50 border-b-neutral-500/50 border-l-neutral-400/50 bg-neutral-800/50 px-3 py-1 transition-all duration-200 group-focus-within:scale-100 group-hover:scale-100 hover:bg-neutral-600/50"
                     >
                         <span className="text-base font-bold text-white">
                             Learn more

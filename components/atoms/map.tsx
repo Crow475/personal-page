@@ -67,6 +67,7 @@ export default function Map({
                                     <Geography
                                         key={geo.rsmKey}
                                         geography={geo}
+                                        tabIndex={-1}
                                     />
                                 ))}
                                 <path
