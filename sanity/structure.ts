@@ -29,6 +29,7 @@ export const structure: StructureResolver = (S) =>
                         ]),
                 ),
             S.listItem().title("Projects").child(S.documentTypeList("project")),
+            S.listItem().title("Skills").child(S.documentTypeList("skill")),
             ...S.documentTypeListItems().filter(
                 (listItem) =>
                     ![

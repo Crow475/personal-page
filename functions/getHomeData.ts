@@ -29,6 +29,16 @@ export default async function getHomeData(): Promise<HomePageContent> {
             shortDescription: string;
             codeLink: string;
             coverImageAlt: string;
+            skills: {
+                name: string;
+                slug: Slug;
+                techDescription: string;
+                techLink?: string;
+                experienceYearsTotal: number;
+                experienceYearsProfessional: number;
+                experienceLevel: "beginner" | "intermediate" | "advanced";
+                experienceDescription?: string;
+            }[];
         }) => ({
             name: project.name,
             shortName: project.shortName,
@@ -37,6 +47,31 @@ export default async function getHomeData(): Promise<HomePageContent> {
             codeLink: project.codeLink,
             coverImage: project.imageUrl,
             coverImageAlt: project.coverImageAlt,
+            skills: project.skills
+                ? project.skills.map(
+                      (skill: {
+                          name: string;
+                          slug: Slug;
+                          techDescription: string;
+                          techLink?: string;
+                          experienceYearsTotal: number;
+                          experienceYearsProfessional: number;
+                          experienceLevel:
+                              "beginner" | "intermediate" | "advanced";
+                          experienceDescription?: string;
+                      }) => ({
+                          name: skill.name,
+                          slug: skill.slug.current,
+                          techDescription: skill.techDescription,
+                          techLink: skill.techLink,
+                          experienceYearsTotal: skill.experienceYearsTotal,
+                          experienceYearsProfessional:
+                              skill.experienceYearsProfessional,
+                          experienceLevel: skill.experienceLevel,
+                          experienceDescription: skill.experienceDescription,
+                      }),
+                  )
+                : [],
         }),
     );
 

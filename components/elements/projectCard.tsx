@@ -2,8 +2,11 @@ import Image from "next/image";
 
 import LinkAtom from "@/components/atoms/link";
 import ButtonLinkAtom from "@/components/atoms/buttonLink";
+import ProjectTopSkillList from "@/components/elements/projectTopSkillList";
 
 import type { ProjectData } from "@/lib/projects";
+
+import { LuImageOff } from "react-icons/lu";
 
 export default function ProjectCard({ data }: { data: ProjectData }) {
     return (
@@ -12,7 +15,7 @@ export default function ProjectCard({ data }: { data: ProjectData }) {
             aria-labelledby={`project-card-${data.slug}-header`}
         >
             <div className="flex h-[55%] w-full rounded-t-xl transition-all duration-200 group-focus-within:h-[35%] group-hover:h-[35%]">
-                {data.coverImage && (
+                {data.coverImage ? (
                     <Image
                         src={`${data.coverImage}?auto=format`}
                         width={400}
@@ -20,6 +23,13 @@ export default function ProjectCard({ data }: { data: ProjectData }) {
                         alt={data.coverImageAlt || data.name}
                         className="h-full w-full rounded-t-xl object-cover"
                     />
+                ) : (
+                    <div className="flex h-full w-full flex-col items-center justify-center rounded-t-xl bg-mist-950">
+                        <LuImageOff className="text-4xl text-neutral-800" />
+                        <span className="pt-2 text-sm font-semibold text-neutral-700">
+                            No image available
+                        </span>
+                    </div>
                 )}
             </div>
             <div className="relative flex h-[45%] w-full flex-col items-start justify-between overflow-hidden rounded-b-xl bg-transparent from-slate-700/30 to-transparent px-4 pt-3 pb-4 transition-all duration-200 group-focus-within:h-[65%] group-focus-within:bg-radial-[at_50%_5%] group-hover:h-[65%] group-hover:bg-radial-[at_50%_5%]">
@@ -34,18 +44,10 @@ export default function ProjectCard({ data }: { data: ProjectData }) {
                 </div>
                 <div className="z-10 flex w-full grow flex-col items-center justify-start py-4">
                     <div className="flex w-full flex-row flex-wrap items-center justify-start space-x-1">
-                        <span className="rounded-2xl bg-neutral-700/50 px-3 py-0.5 text-sm font-bold text-white">
-                            React
-                        </span>
-                        <span className="rounded-2xl bg-neutral-700/50 px-3 py-0.5 text-sm font-bold text-white">
-                            Next.js
-                        </span>
-                        <span className="rounded-2xl bg-neutral-700/50 px-3 py-0.5 text-sm font-bold text-white">
-                            TypeScript
-                        </span>
-                        <span className="rounded-2xl bg-neutral-700/50 px-3 py-0.5 text-sm font-bold text-white">
-                            ...
-                        </span>
+                        <ProjectTopSkillList
+                            skills={data.skills}
+                            keyPrefix={`project-card-${data.slug}-skills`}
+                        />
                     </div>
                     <p className="line-clamp-3 h-18 pt-2 text-sm text-neutral-400 transition-all duration-200 group-focus-within:line-clamp-none group-focus-within:h-30 group-hover:line-clamp-none group-hover:h-30">
                         {data.shortDescription}

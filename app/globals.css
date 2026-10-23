@@ -8,4 +8,9 @@
     body {
         background-color: var(--color-background);
     }
+
+    ::selection {
+        color: white;
+        background-color: var(--color-violet-950);
+    }
 }

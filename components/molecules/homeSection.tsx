@@ -4,7 +4,14 @@ import { inter } from "@/lib/fonts";
 import LinkAtom from "@/components/atoms/link";
 
 function HeaderDecoration() {
-    return <span className="text-5xl font-black text-neutral-500/50">#</span>;
+    return (
+        <span
+            className="text-5xl font-black text-neutral-500/50 select-none"
+            role="presentation"
+        >
+            #
+        </span>
+    );
 }
 
 function HeaderLink({

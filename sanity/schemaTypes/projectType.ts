@@ -38,6 +38,12 @@ export const projectType = defineType({
             validation: (Rule) => Rule.required(),
         }),
         defineField({
+            name: "skills",
+            title: "Skills",
+            type: "array",
+            of: [{ type: "reference", to: { type: "skill" } }],
+        }),
+        defineField({
             name: "shortDescription",
             title: "Short Description",
             type: "text",
