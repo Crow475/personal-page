@@ -23,7 +23,7 @@ export default function CursorLayout({
                     },
                 }}
             />
-            <div className="flex h-svh w-full cursor-none scrollbar-thin scrollbar-thumb-white/40 scrollbar-track-transparent overflow-x-hidden overflow-y-scroll p-0.5 motion-reduce:cursor-default">
+            <div className="flex h-svh w-full cursor-none scrollbar-thin scrollbar-thumb-white/40 scrollbar-track-transparent overflow-x-hidden overflow-y-scroll motion-reduce:cursor-default">
                 {children}
                 <Cursor />
             </div>
