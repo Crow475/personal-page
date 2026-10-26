@@ -24,16 +24,18 @@ export default async function Home() {
             >
                 <h1 className="flex flex-col items-start justify-start pb-5">
                     <span
-                        className={`${kanit.className} text-[200px] leading-none font-black tracking-tight text-white`}
+                        className={`${kanit.className} text-9xl leading-none font-black tracking-tight text-white md:text-[200px]`}
                     >
                         Hi
                     </span>
                     <br />
-                    <span className="text-7xl font-black text-white">
+                    <span className="text-5xl font-black text-white md:text-7xl">
                         my name is Artem
                     </span>
                 </h1>
-                <p className="text-xl text-neutral-400">{data.heroParagraph}</p>
+                <p className="text-lg text-neutral-400 md:text-xl">
+                    {data.heroParagraph}
+                </p>
                 <div className="flex flex-row items-center justify-start space-x-4 pt-10 pl-2">
                     <CTALink
                         href="/projects"

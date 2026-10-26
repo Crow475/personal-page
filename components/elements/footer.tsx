@@ -72,9 +72,9 @@ export default async function Footer() {
     return (
         <div className="flex w-full flex-col items-center justify-center pb-10">
             <footer className="relative flex w-[95%] flex-col items-center justify-between rounded-2xl border border-white/50 py-8">
-                <div className="flex w-full flex-row items-center justify-center py-4">
-                    <nav className="flex w-1/3 flex-col items-start justify-start px-10">
-                        <ul className="flex flex-col items-start justify-start space-y-4">
+                <div className="flex w-full flex-col items-center justify-center py-4 md:flex-row">
+                    <nav className="flex w-full flex-col items-start justify-start px-10 md:w-1/3">
+                        <ul className="flex w-full flex-row items-center justify-center space-y-0 space-x-2 md:flex-col md:items-start md:justify-start md:space-y-4 md:space-x-0">
                             {Destinations.map((destination) => (
                                 <FooterLink
                                     key={destination.href}
@@ -83,12 +83,12 @@ export default async function Footer() {
                             ))}
                         </ul>
                     </nav>
-                    <div className="flex w-1/3 flex-row items-center justify-center py-10">
+                    <div className="flex w-full flex-row items-center justify-center py-10 md:w-1/3">
                         <Image
                             src="/4.svg"
                             width={80}
                             height={80}
-                            className="h-20 w-20 select-none"
+                            className="h-14 w-14 select-none md:h-20 md:w-20"
                             alt=""
                             role="presentation"
                             unoptimized
@@ -97,7 +97,7 @@ export default async function Footer() {
                             src="/7.svg"
                             width={80}
                             height={80}
-                            className="h-20 w-20 select-none"
+                            className="h-14 w-14 select-none md:h-20 md:w-20"
                             alt=""
                             role="presentation"
                             unoptimized
@@ -106,13 +106,13 @@ export default async function Footer() {
                             src="/5.svg"
                             width={80}
                             height={80}
-                            className="h-20 w-20 select-none"
+                            className="h-14 w-14 select-none md:h-20 md:w-20"
                             alt=""
                             role="presentation"
                             unoptimized
                         />
                     </div>
-                    <div className="flex w-1/3 flex-col items-end justify-between space-y-4 px-10">
+                    <div className="flex w-full flex-col items-center justify-between space-y-4 px-10 md:w-1/3 md:items-end">
                         <div className="mx-10 flex h-32 w-32 flex-col items-center justify-start">
                             <Image
                                 src={`${info?.imageUrl}?auto=format` || ""}

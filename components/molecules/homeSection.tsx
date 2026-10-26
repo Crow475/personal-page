@@ -33,7 +33,7 @@ function HeaderLink({
         >
             <HeaderDecoration />
             <h2
-                className={`${inter.className} flex text-5xl font-bold text-white group-hover:text-neutral-200`}
+                className={`${inter.className} flex text-3xl font-bold text-white group-hover:text-neutral-200 md:text-5xl`}
                 id={id}
             >
                 {text}
@@ -48,7 +48,7 @@ function HeaderPlain({ text, id }: { text: string; id?: string }) {
         <div className="flex flex-row items-end-safe justify-start space-x-4 px-6">
             <HeaderDecoration />
             <h2
-                className={`${inter.className} flex text-5xl font-bold text-white`}
+                className={`${inter.className} flex text-3xl font-bold text-white md:text-5xl`}
                 id={id}
             >
                 {text}
