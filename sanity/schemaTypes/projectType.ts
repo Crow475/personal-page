@@ -50,15 +50,61 @@ export const projectType = defineType({
             validation: (Rule) => Rule.required(),
         }),
         defineField({
+            name: "tldr",
+            title: "TLDR",
+            type: "object",
+            fields: [
+                defineField({
+                    name: "type",
+                    title: "Type",
+                    type: "string",
+                    description:
+                        "Display specific tldr, or same as the description text, or disabled",
+                    options: {
+                        list: [
+                            { title: "Description", value: "description" },
+                            { title: "Text", value: "text" },
+                            { title: "Disabled", value: "disabled" },
+                        ],
+                    },
+                    validation: (Rule) => Rule.required(),
+                }),
+                defineField({
+                    name: "text",
+                    title: "Text",
+                    type: "text",
+                    hidden: ({ parent }) => parent?.type !== "text",
+                }),
+            ],
+            validation: (Rule) => Rule.required(),
+        }),
+        defineField({
             name: "text",
             title: "Text",
             type: "array",
             of: [{ type: "block" }],
         }),
         defineField({
-            name: "codeLink",
-            title: "Code Link",
-            type: "url",
+            name: "links",
+            title: "Links",
+            type: "object",
+            fields: [
+                defineField({
+                    name: "code",
+                    title: "Code",
+                    type: "url",
+                }),
+                defineField({
+                    name: "project",
+                    title: "Project",
+                    type: "url",
+                }),
+                defineField({
+                    name: "license",
+                    title: "License",
+                    type: "url",
+                }),
+            ],
         }),
     ],
 });

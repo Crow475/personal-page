@@ -2,12 +2,10 @@ import { notFound } from "next/navigation";
 
 import getProject from "@/functions/getProject";
 
-import { LuAsterisk, LuExternalLink } from "react-icons/lu";
-
 import ProjectAllSkillList from "@/components/elements/projectAllSkillList";
 import ProjectCoverImage from "@/components/elements/projectCoverImage";
-
-import ButtonLinkAtom from "@/components/atoms/buttonLink";
+import ProjectLink from "@/components/molecules/projectLink";
+import ProjectTldr from "@/components/elements/projectTldr";
 
 export default async function Page({
     params,
@@ -23,6 +21,15 @@ export default async function Page({
     if (!projectData) {
         notFound();
     }
+
+    const tldr: string | null =
+        projectData.tldr.type === "disabled"
+            ? null
+            : projectData.tldr.type === "description"
+              ? projectData.shortDescription
+              : projectData.tldr.type === "text" && projectData.tldr.text
+                ? projectData.tldr.text
+                : null;
 
     return (
         <div className="relative flex w-full flex-col items-center justify-start">
@@ -52,31 +59,7 @@ export default async function Page({
                         skills={projectData.skills}
                         keyPrefix={`project-${projectData.slug}`}
                     />
-                    <section className="mx-10 my-6 flex w-1/2 flex-col items-start justify-start rounded-2xl border border-t-neutral-400/50 border-r-neutral-500/50 border-b-neutral-500/50 border-l-neutral-400/50 bg-linear-to-br from-blue-900/50 to-slate-800/50 p-4">
-                        <div className="flex flex-row items-center justify-start">
-                            <LuAsterisk className="h-8 w-8 text-slate-300" />
-                            <h2 className="text-3xl font-black tracking-wider text-white">
-                                TLDR
-                            </h2>
-                        </div>
-                        <div className="flex w-full flex-col items-center justify-start py-4">
-                            <div className="flex w-11/12 flex-col items-center justify-start border-l-2 border-slate-300 px-4 py-2">
-                                <p className="text-white">
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipiscing elit. Quisque faucibus ex sapien
-                                    vitae pellentesque sem placerat. In id
-                                    cursus mi pretium tellus duis convallis.
-                                    Tempus leo eu aenean sed diam urna tempor.
-                                    Pulvinar vivamus fringilla lacus nec metus
-                                    bibendum egestas. Iaculis massa nisl
-                                    malesuada lacinia integer nunc posuere. Ut
-                                    hendrerit semper vel class aptent taciti
-                                    sociosqu. Ad litora torquent per conubia
-                                    nostra inceptos himenaeos.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
+                    {tldr && <ProjectTldr text={tldr} />}
                     <div className="flex w-3/4 flex-col items-start justify-start space-y-4 px-4 py-6">
                         <p className="text-white">
                             Lorem ipsum dolor sit amet consectetur adipiscing
@@ -124,34 +107,24 @@ export default async function Page({
                         </p>
                     </div>
                     <footer className="relative flex w-full flex-row items-center justify-start space-x-4 border-t-2 border-neutral-700 py-3">
-                        <ButtonLinkAtom
-                            href={projectData.codeLink || ""}
-                            target="_blank"
-                            className="z-30 flex flex-row items-center rounded-lg border border-t-neutral-400/50 border-r-neutral-500/50 border-b-neutral-500/50 border-l-neutral-400/50 bg-neutral-800/50 p-2 text-white transition-all duration-300"
-                        >
-                            <span className="font-bold text-white">Code</span>
-                            <LuExternalLink className="ml-2 h-5 w-5 text-white" />
-                        </ButtonLinkAtom>
-                        <ButtonLinkAtom
-                            href={projectData.codeLink || ""}
-                            target="_blank"
-                            className="z-30 flex flex-row items-center rounded-lg border border-t-neutral-400/50 border-r-neutral-500/50 border-b-neutral-500/50 border-l-neutral-400/50 bg-neutral-800/50 p-2 text-white transition-all duration-300"
-                        >
-                            <span className="font-bold text-white">
-                                Project
-                            </span>
-                            <LuExternalLink className="ml-2 h-5 w-5 text-white" />
-                        </ButtonLinkAtom>
-                        <ButtonLinkAtom
-                            href={projectData.codeLink || ""}
-                            target="_blank"
-                            className="z-30 flex flex-row items-center rounded-lg border border-t-neutral-400/50 border-r-neutral-500/50 border-b-neutral-500/50 border-l-neutral-400/50 bg-neutral-800/50 p-2 text-white transition-all duration-300"
-                        >
-                            <span className="font-bold text-white">
-                                License
-                            </span>
-                            <LuExternalLink className="ml-2 h-5 w-5 text-white" />
-                        </ButtonLinkAtom>
+                        {projectData.links.code && (
+                            <ProjectLink
+                                variant="code"
+                                href={projectData.links.code}
+                            />
+                        )}
+                        {projectData.links.project && (
+                            <ProjectLink
+                                variant="project"
+                                href={projectData.links.project}
+                            />
+                        )}
+                        {projectData.links.license && (
+                            <ProjectLink
+                                variant="license"
+                                href={projectData.links.license}
+                            />
+                        )}
                     </footer>
                 </div>
             </article>

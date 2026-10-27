@@ -15,6 +15,8 @@ export default async function Home() {
     const data = await getHomeData();
     const projects = data.featuredProjects;
 
+    // console.log(projects);
+
     return (
         <main className="relative flex w-full flex-col items-center justify-start">
             <HomePageBackground />

@@ -54,9 +54,9 @@ export default function ProjectCard({ data }: { data: ProjectData }) {
                     </p>
                 </div>
                 <div className="flex w-full flex-row items-center justify-end space-x-4">
-                    {data.codeLink && (
+                    {data.links.code && (
                         <LinkAtom
-                            href={data.codeLink}
+                            href={data.links.code}
                             target="_blank"
                             className="group/link flex flex-row"
                             title="View the project's source code"

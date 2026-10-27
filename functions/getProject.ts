@@ -20,9 +20,17 @@ export default async function getProject(
         shortName: project.shortName,
         slug: project.slug.current,
         shortDescription: project.shortDescription,
-        codeLink: project.codeLink,
         coverImage: project.imageUrl,
         coverImageAlt: project.coverImageAlt,
+        links: {
+            code: project.links?.code || "",
+            project: project.links?.project || "",
+            license: project.links?.license || "",
+        },
+        tldr: {
+            type: project.tldr?.type || "disabled",
+            text: project.tldr?.text || "",
+        },
         skills: project.skills
             ? project.skills.map(
                   (skill: {

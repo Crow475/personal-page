@@ -17,8 +17,12 @@ export default async function getAllProjects(): Promise<ProjectData[]> {
             shortName: string;
             slug: Slug;
             shortDescription: string;
-            codeLink: string;
             coverImageAlt: string;
+            links: {
+                code?: string;
+                project?: string;
+                license?: string;
+            };
             skills: {
                 name: string;
                 slug: Slug;
@@ -29,14 +33,26 @@ export default async function getAllProjects(): Promise<ProjectData[]> {
                 experienceLevel: "beginner" | "intermediate" | "advanced";
                 experienceDescription?: string;
             }[];
+            tldr: {
+                type: "description" | "text" | "disabled";
+                text?: string;
+            };
         }) => ({
             name: project.name,
             shortName: project.shortName,
             slug: project.slug.current,
             shortDescription: project.shortDescription,
-            codeLink: project.codeLink,
             coverImage: project.imageUrl,
             coverImageAlt: project.coverImageAlt,
+            links: {
+                code: project.links?.code || "",
+                project: project.links?.project || "",
+                license: project.links?.license || "",
+            },
+            tldr: {
+                type: project.tldr?.type || "disabled",
+                text: project.tldr?.text || "",
+            },
             skills: project.skills
                 ? project.skills.map(
                       (skill: {

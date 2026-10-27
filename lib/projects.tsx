@@ -5,10 +5,18 @@ type ProjectData = {
     shortName: string;
     slug: string;
     shortDescription: string;
-    codeLink?: string;
     coverImage?: string;
     coverImageAlt?: string;
     skills: SkillData[];
+    tldr: {
+        type: "description" | "text" | "disabled";
+        text?: string;
+    };
+    links: {
+        code?: string;
+        project?: string;
+        license?: string;
+    };
 };
 
 export { type ProjectData };
