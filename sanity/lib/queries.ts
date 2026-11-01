@@ -1,5 +1,6 @@
 import { defineQuery } from "next-sanity";
 
+// info type queries
 export const infoFooterQuery = defineQuery(
     `*[_type == "info"][0]{"imageUrl": avatar.asset->url, "footerSocials": socialsFooter[]->, "footerEmail": footerEmail->}`,
 );
@@ -12,14 +13,21 @@ export const locationQuery = defineQuery(
     `*[_type == "location"][0]{header, latitude, longitude, address, timezone, description}`,
 );
 
+// project type queries
 export const projectsQuery = defineQuery(
     `*[_type == "project"]{"imageUrl": coverImage.asset->url, coverImageAlt, name, shortName, slug, shortDescription, skills[]->, links, tldr}`,
 );
 
-export const homePageContentQuery = defineQuery(
-    `*[_type == "homePageContent"][0]{featuredProjects[]->{"imageUrl": coverImage.asset->url, coverImageAlt, name, shortName, slug, shortDescription, skills[]->, links, tldr}, heroParagraph, projectsLinkText, contactLinkText, projectSectionTitle, aboutSectionTitle, contactSectionTitle}`,
-);
-
 export const projectQuery = defineQuery(
     `*[_type == "project" && slug.current == $slug][0]{"imageUrl": coverImage.asset->url, coverImageAlt, name, shortName, slug, shortDescription, longDescription, skills[]->, links, tldr}`,
+);
+
+// skill type queries
+export const skillQuery = defineQuery(
+    `*[_type == "skill" && slug.current == $slug][0]{name, slug, techDescription, techLink, experienceYearsTotal, experienceYearsProfessional, experienceLevel, experienceDescription}`,
+);
+
+// page content queries
+export const homePageContentQuery = defineQuery(
+    `*[_type == "homePageContent"][0]{featuredProjects[]->{"imageUrl": coverImage.asset->url, coverImageAlt, name, shortName, slug, shortDescription, skills[]->, links, tldr}, heroParagraph, projectsLinkText, contactLinkText, projectSectionTitle, aboutSectionTitle, contactSectionTitle}`,
 );
